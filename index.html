@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Space Explorer</title>
+    <style>
+        body { 
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        #info {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            z-index: 100;
+            pointer-events: none;
+        }
+        #planet-info {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            z-index: 100;
+            display: none;
+        }
+        #close-info {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+        button {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: 1px solid white;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .stat-label {
+            font-weight: bold;
+            color: #4fc3f7;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <h1>3D SPACE EXPLORER</h1>
+        <p>Click on planets for information | Scroll to zoom | Right-click and drag to rotate</p>
+    </div>
+
+    <div id="planet-info">
+        <h2 id="planet-name">Planet Name</h2>
+        <p id="planet-description">Description</p>
+        <div class="stats">
+            <div><span class="stat-label">Diameter:</span> <span id="planet-diameter">-</span></div>
+            <div><span class="stat-label">Distance from Sun:</span> <span id="planet-distance">-</span></div>
+            <div><span class="stat-label">Orbital Period:</span> <span id="planet-orbit">-</span></div>
+            <div><span class="stat-label">Moons:</span> <span id="planet-moons">-</span></div>
+            <div><span class="stat-label">Surface Temp:</span> <span id="planet-temp">-</span></div>
+            <div><span class="stat-label">Fun Fact:</span> <span id="planet-fact">-</span></div>
+        </div>
+        <button id="close-info">X</button>
+    </div>
+
+    <div id="controls">
+        <button id="toggle-orbits">Toggle Orbits</button>
+        <button id="auto-rotate">Auto-Rotate</button>
+        <button id="reset-view">Reset View</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
